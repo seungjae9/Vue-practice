@@ -17,7 +17,7 @@ src 폴더 밑에 components 폴더 생성하고 .vue 파일 만들기
 
 src/App.vue 에서 설정
 
-![ex_screenshot](../image/vue-todo/components regi.PNG)
+![ex_screenshot](../image/vue-todo/components-regi.PNG)
 
 components: {
 	'컴포넌트 이름': 컴포넌트 내용
@@ -27,14 +27,14 @@ components: {
 
 
 
-![ex_screenshot](../image/vue-todo/components import.PNG)
+![ex_screenshot](../image/vue-todo/components-import.PNG)
 
 import 불러올 파일 내용 담긴 객체 from '위치';
 위 형식으로 파일 내용 불러오기
 
 
 
-![ex_screenshot](../image/vue-todo/components template.PNG)
+![ex_screenshot](../image/vue-todo/components-template.PNG)
 
 template 안에 불러온 .vue 파일 추가하여 보여주기
 
