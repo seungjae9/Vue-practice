@@ -16,12 +16,23 @@
           <input type="text" ref="modiFocus" v-model="modiTodo">
           <!-- <button @click="updateTodo" >확인</button> -->
       </span>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <h1>Ajax 통신</h1>
+      <button id="ajaxBtn" @click="ajaxBtn">Ajax 통신 위치</button>
+      <div ref="catImage"></div>
     </div>
   </div>
 
 </template>
 
 <script>
+// const x = $refs
+// import $ from 'jquery'
 export default {
   data () {
     return {
@@ -45,21 +56,33 @@ export default {
       }
     },
     removeTodo (id) {
-        let oldData = JSON.parse(localStorage['todo'])
-        let step = 0
-        for (step = 0; oldData.length > step; step++) {
-            if (oldData[step]['id'] === id) {
-                this.toDos.splice(step, 1)
-                oldData = this.toDos
-                localStorage.setItem('todo', JSON.stringify(oldData))
+      let oldData = JSON.parse(localStorage['todo'])
+      let step = 0
+      for (step = 0; oldData.length > step; step++) {
+        if (oldData[step]['id'] === id) {
+          this.toDos.splice(step, 1)
+          oldData = this.toDos
+          localStorage.setItem('todo', JSON.stringify(oldData))
         }
       }
     },
     tempUpdateTodo (id) {
-        this.$refs.modiFocus.focus()
-        // tempId = id
-        // updateTodo(tempId)
+      this.$refs.modiFocus.focus()
     },
+    ajaxBtn () {
+
+      // console.log(Ref)
+      $.ajax({
+        url: 'https://api.thecatapi.com/v1/images/search',
+        methods: 'GET',
+        data: {},
+        success: function (res) {
+          alert(res[0]['url'])
+          // console.log(this.$refs)
+      //     this.$$refs.catImage.innerText = res[0]['url']
+        }
+      })
+    }
     // updateTodo (id) {
     //     console.log(id)
     // }

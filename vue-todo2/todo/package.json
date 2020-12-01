@@ -1,8 +1,8 @@
 {
-  "name": "vue-ajax",
+  "name": "todo",
   "version": "1.0.0",
   "description": "A Vue.js project",
-  "author": "seungjae9 <moseung18@gmail.conm>",
+  "author": "seungjae9 <moseung18@gmail.com>",
   "private": true,
   "scripts": {
     "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
@@ -14,7 +14,6 @@
     "build": "node build/build.js"
   },
   "dependencies": {
-    "jquery": "^3.5.1",
     "vue": "^2.5.2",
     "vue-router": "^3.0.1"
   },
