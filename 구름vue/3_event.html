@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        {{year}} <br>
+        <button @click="plus">더하기</button>
+        <button @click="minus">빼기</button>
+        <br>
+
+        <!-- prevent를 함으로써 페이지 리로드 방지(form태그는 데이터 전송하고 페이지 리로딩 함) -->
+        <form @submit.prevent="submit">
+            <input type="text"><br>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                year: 2018
+                
+            },
+            methods: {
+                plus () {
+                    // this.year += 1
+                    this.year++ 
+                },
+                minus () {
+                    // this.year -= 1
+                    this.year--
+                },
+                submit () {
+                    alert('Submit')
+                }
+            },
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <!-- 함수 인자가 methods에 정의한 함수로 넘어간다. -->
+        <!-- 또한 함수로 정의 했기 때문에 nextYead() 이런식으로 소괄호를 쳐서 접근시키기(만약에 인자가 없더라도 빈 괄호로..) -->
+        {{ nextYear('안녕하세요') }}
+        {{ otherMethod('hi')}}
+    </div>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                person: {
+                    name: '박승재',
+                    age: 29    
+                }
+            },
+            // this는.... 그냥 뭐 별거 별거 다 담고 있는 그런 거 인듯..... 
+            methods: {
+                // function 안쓰고 nextYear() {} 이 방식도 가능
+                nextYear: function (greeting) {
+                    return greeting + '!' + this.person.name + ' 는 내년에 ' + (this.person.age + 1) + '살 입니다.'
+                },
+                otherMethod: function (greeting) {
+                    return this.nextYear(greeting)
+                }
+            },
+        })
+    </script>
+</body>
+</html>

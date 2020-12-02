@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <form @submit.prevent="submit">
+
+            <!-- V-on 으로 이벤트 형식으로 해서 양방향 바인딩도 가능하지만 -->
+            <!-- <input type="text" :vlue="text" @keyup="updateText"><br> -->
+            
+            <!-- v-model로 양방향이 더 간편하고 쉽다(따로 함수 안만들어도 되니까) -->
+            <input type="text" v-model="text"><br>
+            {{text}} <br>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                text: 'text'
+            },
+            methods: {
+                submit () {
+                    alert('Submit')
+                },
+                // 함수에 인자를 전달하지 않았지만 keyup이벤트에서 event 오브젝트가 들어있다.
+                // updateText (event) {
+                //     // console.log(event)
+                //     this.text = event.target.value
+                // }
+            },
+        })
+    </script>
+</body>
+</html>

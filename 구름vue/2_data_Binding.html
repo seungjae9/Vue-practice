@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        {{ nextYear('안녕하세요') }}
+
+        <!-- 데이터 바인딩 방법 -->
+        <!-- data에 있는 값을 html에 쏘는 방법은 v-bind로...  v-bind는 거의 모든 속성값을 만질 수 있다.-->
+        <!-- v-bind ==> : (약어) -->
+        <input v-bind:type="type" :value="inputData">
+        <!-- v-bind도 함수로 인자 전달이 가능하다. -->
+        <a :href="getParkLink('com')">박승재</a>
+    </div>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                person: {
+                    name: '박승재',
+                    age: 29    
+                },
+                inputData: 'hello',
+                type: 'text',
+                link: 'https://www.naver.'
+            },
+            methods: {
+                nextYear: function (greeting) {
+                    return greeting + '!' + this.person.name + ' 는 내년에 ' + (this.person.age + 1) + '살 입니다.'
+                },
+                otherMethod: function () {
+                    this.nextYear()
+                },
+                getParkLink(channel) {
+                    return this.link + channel
+                    }
+            },
+        })
+    </script>
+</body>
+</html>
