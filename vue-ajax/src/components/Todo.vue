@@ -14,7 +14,7 @@
       </ul>
       <span>
           <input type="text" ref="modiFocus" v-model="modiTodo">
-          <!-- <button @click="updateTodo" >확인</button> -->
+        <!-- <button @click="updateTodo" >확인</button> -->
       </span>
       <br>
       <br>
@@ -34,7 +34,7 @@
 // const x = $refs
 // import $ from 'jquery'
 export default {
-  data () {
+  data() {
     return {
       newTodo: '',
       toDos: [],
@@ -43,7 +43,7 @@ export default {
     }
   },
   methods: {
-    addTodo () {
+    addTodo() {
       if (this.newTodo !== '') {
         let oldData = JSON.parse(localStorage['todo'])
         const data = {'id': Date.now(), 'content': this.newTodo}
@@ -55,7 +55,7 @@ export default {
         alert('내용을 입력하세요')
       }
     },
-    removeTodo (id) {
+    removeTodo(id) {
       let oldData = JSON.parse(localStorage['todo'])
       let step = 0
       for (step = 0; oldData.length > step; step++) {
@@ -66,10 +66,10 @@ export default {
         }
       }
     },
-    tempUpdateTodo (id) {
+    tempUpdateTodo(id) {
       this.$refs.modiFocus.focus()
     },
-    ajaxBtn () {
+    ajaxBtn() {
 
       // console.log(Ref)
       $.ajax({
@@ -79,7 +79,7 @@ export default {
         success: function (res) {
           alert(res[0]['url'])
           // console.log(this.$refs)
-      //     this.$$refs.catImage.innerText = res[0]['url']
+          //     this.$$refs.catImage.innerText = res[0]['url']
         }
       })
     }
@@ -87,10 +87,10 @@ export default {
     //     console.log(id)
     // }
   },
-  mounted () {
+  mounted() {
     this.$refs.inputFocus.focus()
   },
-  created () {
+  created() {
     if (localStorage.getItem('todo') === null) {
       localStorage['todo'] = JSON.stringify([{'id': Date.now(), 'content': '메모를 시작하세요'}])
     }
