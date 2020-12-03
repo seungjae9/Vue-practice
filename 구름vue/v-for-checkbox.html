@@ -1,0 +1,58 @@
+<html>
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div>
+        <div id="app">
+            <center>
+                <div>
+                    <ul v-for="user in chkUsers">
+                        <input type="checkbox" v-model="user.status" v-bind:value="user.id">
+                        {{user.Name}}
+                    </ul>
+                    <input type="button" class="btn btn-primary" v-on:click="OnSubmit()" name="" value="submit" />
+                    <span>
+                        {{selectedval}}
+                    </span>
+                </div>
+            </center>
+        </div>
+    </div>
+</body>
+
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            chkUsers: [{
+                id: 1,
+                Name: "Peter",
+                status: false
+            },
+            {
+                id: 2,
+                Name: "John",
+                status: false
+            },
+            {
+                id: 3,
+                "Name": "Mark",
+                status: false
+            }],
+            selectedval: []
+        },
+        methods: {
+            OnSubmit: function () {
+                var Newval = '';
+                this.chkUsers.map(function (k) {
+                    k.status ? Newval = k.Name + "," + Newval : "";
+                });
+                this.selectedval.push(Newval)
+            }
+        }
+    })
+</script>
+
+</html>

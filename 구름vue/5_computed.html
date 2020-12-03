@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <!-- computed를 이용하면 세군데에서 중복 하지 않고 한번에 적을 수 있다. -->
+        <!-- methods에서 사용해도 되긴하는데 computed는 캐싱을 하고 함수는(methods) 캐싱을 하지 않는다-->
+        <!-- 그니까 맨처음 인스턴스 생성할때 computed는 한번만 계산 해두고  {{ reversedMessage }} 으로 접근하지만 -->
+        <!-- methods는 {{ reversedMessage }} 만날때마다 그때그때 함수로 찾아가서 계산한다 -->
+        {{ reversedMessage }}
+        {{ reversedMessage }}
+        {{ reversedMessage }}
+        
+        <!-- 데이터가 바껴도 바로바로 다시 렌더링 한다.  -->
+        <button @click="changeMessage">클릭</button>
+    </div>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                message: '안녕하세요'
+            },
+            methods: {
+                changeMessage() {
+                    this.message = '박승재'
+                }
+            },
+            computed: {
+                reversedMessage() {
+                    return this.message.split('').reverse().join('')
+                }
+            }
+        })
+    </script>
+</body>
+</html>
