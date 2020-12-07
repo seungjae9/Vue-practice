@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <!-- 한번에 여러개를 처리 하고 싶을때 template 태그 걸기 -->
+        <template v-if="show">
+            <div>1</div>
+            <div>2</div>
+            <div>3</div>
+        </template>
+        <div v-else>No</div>
+        <br>
+        <button @click="toggleShow">Toggle</button>
+        <br>
+        <br>
+        <template v-if="number === 1">
+            <div>1</div>
+            <div>2</div>
+            <div>3</div>
+        </template>
+        <div v-else-if="number === 2">Hi</div>
+        <div v-else>No</div>
+        <button @click="increaseNumber">increase</button> {{number}}
+    </div>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                show: true,
+                number: 1,
+
+            },
+            methods: {
+                toggleShow() {
+                    this.show = !this.show
+                },
+                increaseNumber () {
+                    this.number++
+                    if (this.number === 4) {
+                        this.number = 1
+                    }
+                }
+            },         
+        })
+    </script>
+</body>
+</html>

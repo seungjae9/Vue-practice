@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .red {
+            color: red;
+        }
+
+        .bold {
+            font-weight: bold;
+        }
+        /* 만약에 클래스이름에 대쉬가 있다면 3) */
+        .font-bold {
+            font-weight: bold;
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <!-- red라는 클래스를 바인딩 시키기(스타일 태그도 바인딩 가능하다) -->
+        <!-- ,로 여러개도 바인딩 가능 -->
+        <!-- <div :class="{ red: isRed, bold: isBold }">Hello</div> -->
+
+        <!-- 3) 클래스이름에 대쉬가 있다면 스트링으로 묶어줘야한다. -->
+        <div :class="{ red: isRed, 'font-bold': isBold }">Hello</div>
+        
+        <button @click="update">클릭</button>
+    </div>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                isRed: false,
+                isBold: false
+            },
+            methods: {
+                update() {
+                    this.isRed = !this.isRed
+                    this.isBold = !this.isBold
+                }
+            },
+            
+        })
+    </script>
+</body>
+</html>
