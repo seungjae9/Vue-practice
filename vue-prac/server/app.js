@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 const session = require('express-session');
+const fs = require('fs'); // 디렉토리에 접근할수있는 모듈중에 하나(파일 시스템)
 
 app.use(session({
     secret: 'secret code', // 세션에 대한 키(원하는 문자열)
@@ -19,11 +20,20 @@ const server = app.listen(3000, () => {
     console.log('server started. port 3000.')
 });
 
+
+let sql = require('./sql.js');
+
+fs.watchFile(__dirname + '/sql.js', (curr, prev) => {                           // fs.watchFile 을 통해서 sql.js 파일을 계속 보고있다.
+  console.log('sql 변경시 재시작 없이 반영되도록 함');
+  delete require.cache[require.resolve('./sql.js')];                            //캐시에 sql.js 파일이 올라가있는 상태이기때문에 날려주는거다.  [require.resolve] => 해당 파일을 가져옴
+  sql = require('./sql.js');
+});
+
 // db 접속 정보
 const db = {
     database: "dev",
     connectionLimit: 10,
-    host: "192.168.1.104",
+    host: "127.0.0.1",
     user: "root",
     password: "mariadb"
 
@@ -43,7 +53,6 @@ app.post('/api/logout', async(request, res) => {
     res.send('ok');
 });
 
-const sql = require('./sql.js');
 
 // :alias = >api 이후 주소가 login, logout이 아닌 나머지는 여기를 타라
 
